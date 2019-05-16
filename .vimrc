@@ -2,7 +2,7 @@
 "* Key bindings
 "****************************************************************************
 inoremap <C-L> <Esc>
-inoremap {<cr> {<cr>}<c-o>O<tab>
+inoremap {<cr> {<cr>}<c-o>O
 inoremap [<space> []<left>
 inoremap ({<cr> ({<cr>})<c-o>O<tab>
 inoremap (<space> ()<left>

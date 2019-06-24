@@ -1,12 +1,25 @@
 "****************************************************************************
+"* Auto sets
+"****************************************************************************
+set nohlsearch
+set relativenumber
+"****************************************************************************
 "* Key bindings
 "****************************************************************************
 inoremap <C-L> <Esc>
 inoremap {<cr> {<cr>}<c-o>O
 inoremap [<space> []<left>
+inoremap {<space> {}<left>
 inoremap ({<cr> ({<cr>})<c-o>O<tab>
 inoremap (<space> ()<left>
 nnoremap <C-N><C-T> :NERDTree<cr>
+nnoremap <C-L> :noh<cr>
+
+"Window movement keybindings
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-W> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
 
 "****************************************************************************
 "* Tabbing garbage
@@ -18,7 +31,8 @@ set pastetoggle=<F3>
 " Set special tabbing for ruby
 autocmd Filetype ruby setlocal shiftwidth=2
 autocmd Filetype ruby setlocal softtabstop=2
-
+autocmd Filetype coffee setlocal shiftwidth=2
+autocmd Filetype coffee setlocal softtabstop=2
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************

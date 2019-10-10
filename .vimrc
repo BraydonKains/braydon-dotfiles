@@ -2,7 +2,9 @@
 "* Auto sets
 "****************************************************************************
 set nohlsearch
+set number
 set relativenumber
+set background=dark
 "****************************************************************************
 "* Key bindings
 "****************************************************************************
@@ -12,6 +14,7 @@ inoremap [<space> []<left>
 inoremap {<space> {}<left>
 inoremap ({<cr> ({<cr>})<c-o>O<tab>
 inoremap (<space> ()<left>
+inoremap {)<cr> {<cr>});<c-o>O
 nnoremap <C-N><C-T> :NERDTree<cr>
 nnoremap <C-L> :noh<cr>
 
@@ -24,10 +27,11 @@ nnoremap <C-L> :noh<cr>
 "****************************************************************************
 "* Tabbing garbage
 "****************************************************************************
-set number
-set shiftwidth=4
-set softtabstop=4 
-set pastetoggle=<F3>
+set autoindent noexpandtab tabstop=4 shiftwidth=4
+"set number
+"set shiftwidth=4
+"set softtabstop=4 
+"set pastetoggle=<F3>
 " Set special tabbing for ruby
 autocmd Filetype ruby setlocal shiftwidth=2
 autocmd Filetype ruby setlocal softtabstop=2
@@ -38,9 +42,16 @@ autocmd Filetype coffee setlocal softtabstop=2
 "*****************************************************************************
 call plug#begin(expand('~/.vim/plugged'))
 Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
-Plug 'posva/vim-vue', { 'for' : 'vue' }
-Plug 'tpope/vim-surround'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'alvan/vim-closetag'
+Plug 'webdesus/polymer-ide.vim', { 'do' : 'npm install' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'posva/vim-vue'
+Plug 'jonsmithers/vim-html-template-literals'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 "*****************************************************************************

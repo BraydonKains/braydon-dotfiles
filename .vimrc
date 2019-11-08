@@ -18,6 +18,7 @@ inoremap {)<cr> {<cr>});<c-o>O
 nnoremap <C-N><C-T> :NERDTree<cr>
 nnoremap <C-L> :noh<cr>
 
+command Esfix :CocCommand eslint.executeAutofix
 "Window movement keybindings
 "nnoremap <C-J> <C-W><C-J>
 "nnoremap <C-K> <C-W><C-K>
@@ -50,8 +51,11 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'posva/vim-vue'
-Plug 'jonsmithers/vim-html-template-literals'
+Plug 'jonsmithers/vim-html-template-literals', { 'branch': 'dev' }
+Plug 'Quramy/vim-js-pretty-template'
 Plug 'pangloss/vim-javascript'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'junegunn/fzf'
 call plug#end()
 
 "*****************************************************************************
@@ -59,4 +63,4 @@ call plug#end()
 "*****************************************************************************
 
 "Auto close tags on these file types
-let g:closetag_filenames = '*.html,*.xhtml,*.vue'
+let g:closetag_filenames = '*.html,*.xhtml,*.vue,*.js'

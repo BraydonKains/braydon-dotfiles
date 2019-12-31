@@ -5,6 +5,10 @@ set nohlsearch
 set number
 set relativenumber
 set background=dark
+let mapleader = " "
+
+highlight clear CursorLine
+highlight clear CursorLineNR
 "****************************************************************************
 "* Key bindings
 "****************************************************************************
@@ -16,14 +20,10 @@ inoremap ({<cr> ({<cr>})<c-o>O<tab>
 inoremap (<space> ()<left>
 inoremap {)<cr> {<cr>});<c-o>O
 nnoremap <C-N><C-T> :NERDTree<cr>
+nnoremap <C-N><C-N> :NERDTree<cr>
 nnoremap <C-L> :noh<cr>
 
 command Esfix :CocCommand eslint.executeAutofix
-"Window movement keybindings
-"nnoremap <C-J> <C-W><C-J>
-"nnoremap <C-K> <C-W><C-K>
-"nnoremap <C-W> <C-W><C-L>
-"nnoremap <C-H> <C-W><C-H>
 
 "****************************************************************************
 "* Tabbing garbage
@@ -57,11 +57,75 @@ Plug 'pangloss/vim-javascript'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'junegunn/fzf'
 Plug 'klen/python-mode'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
+
+"*****************************************************************************
+"* Omnisharp configs
+"*****************************************************************************
+filetype indent plugin on
+let g:OmniSharp_server_stdio = 1
+set previewheight=5
+let g:OmniSharp_highlight_types = 3
+set completeopt=longest,menuone,preview
+augroup omnisharp_commands
+    autocmd!
+
+    " Show type information automatically when the cursor stops moving
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+
+    " The following commands are contextual, based on the cursor position.
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+
+    " Finds members in the current buffer
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
+    autocmd FileType cs nnoremap <buffer> <Leader>fx :OmniSharpFixUsings<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>tt :OmniSharpTypeLookup<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>dc :OmniSharpDocumentation<CR>
+    autocmd FileType cs nnoremap <buffer> <C-\> :OmniSharpSignatureHelp<CR>
+    autocmd FileType cs inoremap <buffer> <C-\> <C-o>:OmniSharpSignatureHelp<CR>
+
+    " Navigate up and down by method/property/field
+    autocmd FileType cs nnoremap <buffer> <C-k> :OmniSharpNavigateUp<CR>
+    autocmd FileType cs nnoremap <buffer> <C-j> :OmniSharpNavigateDown<CR>
+
+    " Find all code errors/warnings for the current solution and populate the quickfix window
+    autocmd FileType cs nnoremap <buffer> <Leader>cc :OmniSharpGlobalCodeCheck<CR>
+
+	" Running tests
+    autocmd FileType cs nnoremap <buffer> <Leader>rt :OmniSharpRunTest<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>ra :OmniSharpRunTestsInFile<CR>
+augroup END
+
+" Contextual code actions (uses fzf, CtrlP or unite.vim when available)
+nnoremap <Leader><Space> :OmniSharpGetCodeActions<CR>
+" Run code actions with text selected in visual mode to extract method
+xnoremap <Leader><Space> :call OmniSharp#GetCodeActions('visual')<CR>
+
+" Rename with dialog
+nnoremap <Leader>nm :OmniSharpRename<CR>
+nnoremap <F2> :OmniSharpRename<CR>
+" Rename without dialog - with cursor on the symbol to rename: `:Rename newname`
+command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+nnoremap <Leader>cf :OmniSharpCodeFormat<CR>
+
+" Start the omnisharp server for the current solution
+nnoremap <Leader>ss :OmniSharpStartServer<CR>
+nnoremap <Leader>sp :OmniSharpStopServer<CR>
+
+nnoremap <C-B> :!msbuild<CR>
 
 "*****************************************************************************
 "* Plugin based configs
 "*****************************************************************************
-
 "Auto close tags on these file types
 let g:closetag_filenames = '*.html,*.xhtml,*.vue,*.js'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']

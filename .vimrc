@@ -5,7 +5,6 @@ set nohlsearch
 set number
 set relativenumber
 set background=dark
-let mapleader = " "
 
 highlight clear CursorLine
 highlight clear CursorLineNR
@@ -24,6 +23,15 @@ nnoremap <C-N><C-N> :NERDTree<cr>
 nnoremap <C-L> :noh<cr>
 
 command Esfix :CocCommand eslint.executeAutofix
+
+"****************************************************************************
+"* Spacemacs envy
+"****************************************************************************
+let mapleader = " "
+nnoremap <Leader>w <C-w>
+nnoremap <Leader>fs :w<cr>
+nnoremap <Leader>nt :NERDTree<cr>
+nnoremap <Leader>fer :source ~/.vimrc<cr>
 
 "****************************************************************************
 "* Tabbing garbage
@@ -127,5 +135,5 @@ nnoremap <C-B> :!msbuild<CR>
 "* Plugin based configs
 "*****************************************************************************
 "Auto close tags on these file types
-let g:closetag_filenames = '*.html,*.xhtml,*.vue,*.js'
+let g:closetag_filenames = '*.html,*.xhtml,*.vue,*.js,*.ts'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']

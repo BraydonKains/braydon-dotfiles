@@ -34,7 +34,8 @@ nnoremap <Leader>w <C-w>
 nnoremap <Leader>fs :w<cr>
 nnoremap <Leader>nt :NERDTree<cr>
 nnoremap <Leader>fer :source ~/.vimrc<cr>
-nnoremap <Leader>r :Rg <cword> wordUnderCursor
+nnoremap <Leader>r :<C-u>registers<CR>:normal! "p<Left>
+nnoremap <Leader>ff :!rg <cword><cr>
 
 "****************************************************************************
 "* Tabbing garbage
@@ -67,7 +68,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
-Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
 "*****************************************************************************

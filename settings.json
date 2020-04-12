@@ -1,0 +1,25 @@
+{
+    "workbench.colorTheme": "Dark (Molokai)",
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideLineNumbers": false,
+    "editor.fontFamily": " 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "keyboard.dispatch": "keyCode",
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "w"],
+            "after": ["<C-w>"]
+        },
+        { 
+            "before": ["<leader>", "f", "s"],
+            "after": [":wq<cr>"]
+        },
+        { 
+            "before": ["<leader>", "t"],
+            "after": ["<C-`>"]
+        }
+    ],
+    "editor.lineNumbers": "relative",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.settings.editor": "json"
+}

@@ -16,6 +16,7 @@ inoremap <C-L> <Esc>
 inoremap {<cr> {<cr>}<c-o>O
 inoremap [<space> []<left>
 inoremap {<space> {}<left>
+inoremap {{<space> {{<space><space>}}<left><left><left>
 inoremap ({<cr> ({<cr>})<c-o>O<tab>
 inoremap (<space> ()<left>
 inoremap {)<cr> {<cr>});<c-o>O
@@ -36,6 +37,7 @@ nnoremap <Leader>nt :NERDTree<cr>
 nnoremap <Leader>fer :source ~/.vimrc<cr>
 nnoremap <Leader>r :<C-u>registers<CR>:normal! "p<Left>
 nnoremap <Leader>ff :!rg <cword><cr>
+nnoremap <Leader>p :set paste!<cr>
 
 "****************************************************************************
 "* Tabbing garbage

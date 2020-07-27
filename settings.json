@@ -1,9 +1,12 @@
 {
-    "workbench.colorTheme": "Dark (Molokai)",
+    "workbench.settings.editor": "json",
+    "editor.lineNumbers": "relative",
+    "editor.accessibilitySupport": "off",
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "workbench.settings.useSplitJSON": true,
+    "keyboard.dispatch": "keycode",
     "zenMode.hideStatusBar": false,
     "zenMode.hideLineNumbers": false,
-    "editor.fontFamily": " 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "keyboard.dispatch": "keyCode",
     "vim.leader": "<space>",
     "vim.normalModeKeyBindings": [
         {
@@ -13,13 +16,59 @@
         { 
             "before": ["<leader>", "f", "s"],
             "after": [":wq<cr>"]
-        },
-        { 
-            "before": ["<leader>", "t"],
-            "after": ["<C-`>"]
         }
     ],
-    "editor.lineNumbers": "relative",
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Mocha Tests",
+                "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+                "args": [
+                    "${workspaceFolder}/test/**/*.test.js"
+                ],
+                "console": "integratedTerminal",
+                "internalConsoleOptions": "neverOpen"
+            },
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Mocha Current File",
+                "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+                "args": [
+                    "--timeout",
+                    "999999",
+                    "--colors",
+                    "${file}"
+                ],
+                "console": "integratedTerminal",
+                "internalConsoleOptions": "neverOpen"
+            }
+        ]
+    },
+    "liveshare.presence": true,
+    "window.zoomLevel": 1,
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.settings.editor": "json"
+    "gitlens.mode.active": "zen",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "enabled": true,
+        "args": []
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "gruvboxMaterial.darkContrast": "hard"
 }

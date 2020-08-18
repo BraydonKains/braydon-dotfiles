@@ -82,4 +82,4 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:htl_css_templates = 1
 
 let g:vim_markdown_folding_level = 2
-autocmd Filetype md :CocDisable
+autocmd Filetype markdown let b:coc_suggest_disable = 1

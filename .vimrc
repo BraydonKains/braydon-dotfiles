@@ -70,6 +70,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
+Plug 'fatih/vim-go'
 call plug#end()
 
 "*****************************************************************************
@@ -79,4 +80,6 @@ call plug#end()
 let g:closetag_filenames = '*.html,*.xhtml,*.vue,*.js,*.ts'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:htl_css_templates = 1
+
 let g:vim_markdown_folding_level = 2
+autocmd Filetype md :CocDisable

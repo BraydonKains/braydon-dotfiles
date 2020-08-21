@@ -7,8 +7,6 @@ set relativenumber
 set background=dark
 set directory^=~/.vim/tmp//
 
-highlight clear CursorLine
-highlight clear CursorLineNR
 "****************************************************************************
 "* Key bindings
 "****************************************************************************

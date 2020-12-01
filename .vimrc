@@ -69,6 +69,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript'
 Plug 'fatih/vim-go'
+Plug 'posva/vim-vue'
 call plug#end()
 
 "*****************************************************************************

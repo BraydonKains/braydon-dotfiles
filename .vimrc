@@ -5,7 +5,20 @@ set nohlsearch
 set number
 set relativenumber
 set background=dark
-set directory^=~/.vim/tmp//
+set signcolumn=yes
+
+if exists('g:fvim_loaded')
+	set guifont=Fira\ Code:h15
+    colorscheme gruvbox
+
+    FVimFontLigature v:true
+    
+    let g:NERDTreeDirArrows = 1
+    let g:NERDTreeGitStatusUseNerdFonts = 1
+    let g:airline_powerline_fonts = 1
+endif
+
+set encoding=utf-8
 
 "****************************************************************************
 "* Key bindings
@@ -18,9 +31,10 @@ inoremap {{<space> {{<space><space>}}<left><left><left>
 inoremap ({<cr> ({<cr>})<c-o>O<tab>
 inoremap (<space> ()<left>
 inoremap {)<cr> {<cr>});<c-o>O
-nnoremap <C-N><C-T> :NERDTree<cr>
-nnoremap <C-N><C-N> :NERDTree<cr>
+
 nnoremap <C-L> :noh<cr>
+
+tnoremap <Esc> <C-\><C-N>
 
 command Esfix :CocCommand eslint.executeAutofix
 nnoremap <C-F> :Esfix<cr>
@@ -29,18 +43,25 @@ nnoremap <C-F> :Esfix<cr>
 "* Spacemacs envy
 "****************************************************************************
 let mapleader = " "
+
+"Window stuff
 nnoremap <Leader>w <C-w>
+nnoremap <Leader>ws :vsp<cr>
+nnoremap <Leader>wi :sp<cr>
+nnoremap <Leader>wt :tabnew<cr>
+
 nnoremap <Leader>fs :w<cr>
-nnoremap <Leader>nt :NERDTree<cr>
+nnoremap <Leader>nt :NERDTreeToggle<cr>
 nnoremap <Leader>fer :source ~/.vimrc<cr>
 nnoremap <Leader>r :<C-u>registers<CR>:normal! "p<Left>
-nnoremap <Leader>ff :!rg <cword><cr>
+nnoremap <Leader>ff :Rg <cword><cr>
 nnoremap <Leader>p :set paste!<cr>
+
 
 "****************************************************************************
 "* Tabbing garbage
 "****************************************************************************
-set autoindent noexpandtab tabstop=4 shiftwidth=4
+set autoindent expandtab tabstop=4 shiftwidth=4
 "set number
 "set shiftwidth=4
 "set softtabstop=4 
@@ -54,7 +75,7 @@ autocmd Filetype coffee setlocal softtabstop=2
 "" Plug install packages
 "*****************************************************************************
 call plug#begin(expand('~/.vim/plugged'))
-Plug 'scrooloose/nerdtree', { 'on' : 'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
@@ -67,9 +88,14 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
+Plug 'yuezk/vim-js'
 Plug 'fatih/vim-go'
 Plug 'posva/vim-vue'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 "*****************************************************************************
@@ -82,3 +108,7 @@ let g:htl_css_templates = 1
 
 let g:vim_markdown_folding_level = 2
 autocmd Filetype markdown let b:coc_suggest_disable = 1
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrp_custom_ignore = '\v[\/]\.(git|node_modules)$'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']

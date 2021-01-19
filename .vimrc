@@ -35,6 +35,7 @@ inoremap {)<cr> {<cr>});<c-o>O
 nnoremap <C-L> :noh<cr>
 
 tnoremap <Esc> <C-\><C-N>
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 command Esfix :CocCommand eslint.executeAutofix
 nnoremap <C-F> :Esfix<cr>

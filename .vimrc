@@ -37,8 +37,14 @@ nnoremap <C-L> :noh<cr>
 tnoremap <Esc> <C-\><C-N>
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+"****************************************************************************
+"* Commands
+"****************************************************************************
 command Esfix :CocCommand eslint.executeAutofix
-nnoremap <C-F> :Esfix<cr>
+command JsonFormat :%!python -m json.tool
+
+autocmd Filetype javascript nnoremap <C-F> :Esfix<cr>
+autocmd Filetype json nnoremap <C-F> :JsonFormat<cr>
 
 "****************************************************************************
 "* Spacemacs envy

@@ -1,4 +1,5 @@
 {
+    "telemetry.enableTelemetry": false,
     "workbench.settings.editor": "json",
     "editor.lineNumbers": "relative",
     "editor.accessibilitySupport": "off",

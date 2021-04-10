@@ -17,6 +17,10 @@
         { 
             "before": ["<leader>", "f", "s"],
             "after": [":wq<cr>"]
+        },
+        {
+            "before": ["<leader>", "n", "t"],
+            "commands": ["workbench.action.toggleSidebarVisibility"]
         }
     ],
     "launch": {

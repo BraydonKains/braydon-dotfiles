@@ -64,12 +64,20 @@ nnoremap <Leader>r :<C-u>registers<CR>:normal! "p<Left>
 nnoremap <Leader>ff :Rg <cword><cr>
 nnoremap <Leader>p :set paste!<cr>
 
+nnoremap <Leader>c "+
+vnoremap <Leader>c "+
+
+"****************************************************************************
+"* COC default actions
+"****************************************************************************
+
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nmap <Leader>rn <Plug>(coc-rename)
+
 
 "****************************************************************************
 "* Tabbing garbage
